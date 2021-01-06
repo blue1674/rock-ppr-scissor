@@ -1,0 +1,45 @@
+body{
+    background-color: black;
+    font-family: 'Audiowide', cursive;
+    color: whitesmoke;
+    text-align: center;
+}
+h1{
+    font-size: 100px;
+    margin-top: 10px;
+}
+.container{
+    display: flex; 
+    justify-content: space-evenly;
+    font-size: 40px;
+    margin: 0px;
+    padding: 0px; 
+}
+
+.container > div{
+    margin: 0px;
+    padding: 0px; 
+    border: 10px solid whitesmoke;
+    width: 40%;
+    height: 500px;
+}
+
+.images{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.images >  img{
+    width: 100px; 
+    align-self: center;
+}
+
+hr{
+    padding: 0px;
+    margin: 0px;
+}
+
+.container > div > p{
+ margin: 0px;
+ padding: 0px;
+}
