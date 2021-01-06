@@ -59,10 +59,12 @@
                 console.log(declareWinner(winner, computerSelection, playerSelection));
                 if (winner === "Player")
                     scoreP++;
-                if (winner === "Computer")
+                else if (winner === "Computer")
                     scoreC++;
+                else
+                    i--;
             }
-            console.log(`Your Score:${scoreP}\nComputer's Score: ${scoreC} \nTies: ${5 - scoreP - scoreC}`);
+            console.log(`Your Score:${scoreP}\nComputer's Score: ${scoreC}`);
             if (scoreP > scoreC)
                 console.log(`You Win the game!`);
             else if (scoreP === scoreC)
