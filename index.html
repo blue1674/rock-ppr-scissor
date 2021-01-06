@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function computerPlay() {
+            let option = ["rock", "scissor", "paper"];
+            let randomIndex = Math.floor(Math.random() * 3);
+            return option[randomIndex];
+        }
+
+
+
+        function declareWinner(winner, computerSelect, playerSelect) {
+            if (winner === "None")
+                return `It's a tie of two ${computerSelect}s.`;
+            if (winner === "Computer")
+                return `You Lose! ${computerSelect} beats ${playerSelect}!`;
+            return `You Win! ${playerSelect} beats ${computerSelect}!`;
+        }
+
+        function capitalize(word) {
+            return word.charAt(0).toUpperCase() + word.substring(1).toLowerCase();
+        }
+        function game() {
+            function playRound(playerSelection, computerSelection) {
+                let options = {
+                    Rock: 0,
+                    Scissor: 1,
+                    Paper: 2,
+                }
+                let playerIndex = options[playerSelection];
+                let computerIndex = options[computerSelection];
+                let winner = "None";
+                if (playerIndex === computerIndex)
+                    return winner;
+
+                if ((playerIndex == computerIndex - 1) || (playerIndex == 0 && computerIndex == 1))
+                    winner = "Player";
+                else
+                    winner = "Computer";
+                return winner;
+
+
+            }
+
+            let scoreP = 0;
+            let scoreC = 0;
+            for (let i = 0; i < 5; i++) {
+                const playerSelection = capitalize(prompt("Rock/Paper/Scissor?"));
+                const computerSelection = capitalize(computerPlay());
+                let winner = playRound(playerSelection, computerSelection);
+                console.log(declareWinner(winner, computerSelection, playerSelection));
+                if (winner === "Player")
+                    scoreP++;
+                if (winner === "Computer")
+                    scoreC++;
+            }
+            console.log(`Your Score:${scoreP}\nComputer's Score: ${scoreC} \nTies: ${5 - scoreP - scoreC}`);
+            if (scoreP > scoreC)
+                console.log(`You Win the game!`);
+            else if (scoreP === scoreC)
+                console.log('It\'s a Tie!');
+            else
+                console.log(`You lose the game!`);
+        }
+        game();
+    </script>
+</body>
+
+</html>
