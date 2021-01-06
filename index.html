@@ -52,25 +52,23 @@
 
             let scoreP = 0;
             let scoreC = 0;
-            for (let i = 0; i < 5; i++) {
+            while(scoreP !== 5 && scoreC !== 5) {
                 const playerSelection = capitalize(prompt("Rock/Paper/Scissor?"));
                 const computerSelection = capitalize(computerPlay());
                 let winner = playRound(playerSelection, computerSelection);
-                console.log(declareWinner(winner, computerSelection, playerSelection));
+                alert(declareWinner(winner, computerSelection, playerSelection));
                 if (winner === "Player")
                     scoreP++;
                 else if (winner === "Computer")
                     scoreC++;
-                else
-                    i--;
             }
-            console.log(`Your Score:${scoreP}\nComputer's Score: ${scoreC}`);
+            alert(`Your Score:${scoreP}\nComputer's Score: ${scoreC}`);
             if (scoreP > scoreC)
-                console.log(`You Win the game!`);
+                alert(`You Win the game!`);
             else if (scoreP === scoreC)
-                console.log('It\'s a Tie!');
+                alert('It\'s a Tie!');
             else
-                console.log(`You lose the game!`);
+                alert(`You lose the game!`);
         }
         game();
     </script>
