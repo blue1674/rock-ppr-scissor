@@ -76,16 +76,16 @@ hr{
     justify-self: flex-start;
 }
 
-.playButton{
+#playButton{
     margin-top: 100px;
-    background-color:  #AA1111 ; 
-    border: 1px solid turquoise;
-    color:  #EBEBEB;
+    background-color:  #ec0c0c ; 
+    border: 1px solid rgb(0, 248, 0);
+    color:  #ecfd00;
     text-align: center;
     text-decoration: none;
     font-family: 'Audiowide', cursive;
     font-size: 25px;
     /* height: 20%; */
     /* justify-self: center; */
-    box-shadow: 0 0 5px 10px  rgba(9, 240, 228, 0.3);
+    /* box-shadow: 0 0 5px 10px  rgba(9, 240, 228, 0.3); */
 }

@@ -2,6 +2,8 @@ let playerScore = document.getElementById("player-score");
 let compScore = document.getElementById("comp-score");
 
 function game(event){
+document.getElementById("scoreBoard").style.visibility = "visible"; 
+playButton.removeEventListener("click", game);
 function computerPlay() {
     let option = ["rock", "scissor", "paper"];
     let randomIndex = Math.floor(Math.random() * 3);
@@ -34,7 +36,6 @@ function playRound(event, playerSelect) {
         },10)
        
     }
-
     return winner;
 }
 
@@ -46,7 +47,8 @@ rock.addEventListener("click", (event) => playRound(event, "rock"));
 ppr.addEventListener("click", (event) => playRound(event, "paper"));
 scissor.addEventListener("click", (event) => playRound(event, "scissor"));
 }
-document.getElementsByClassName("playButton")[0].addEventListener("click", (event) => game(event))
+const playButton = document.getElementById("playButton");
+playButton.addEventListener("click", game)
 
 
 
