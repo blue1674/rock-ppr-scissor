@@ -1,7 +1,7 @@
 let playerScore = document.getElementById("player-score");
 let compScore = document.getElementById("comp-score");
 
-
+function game(event){
 function computerPlay() {
     let option = ["rock", "scissor", "paper"];
     let randomIndex = Math.floor(Math.random() * 3);
@@ -29,7 +29,10 @@ function playRound(event, playerSelect) {
     }
     document.getElementById("whoWon").innerHTML = `${winner.toUpperCase()} won this round!`;
     if (compScore.textContent === '5' || playerScore.textContent === '5') {
-        alert(`${winner} won the game!`); window.location.reload()
+        setTimeout(function() {
+            alert(`${winner} won the game!`); window.location.reload();
+        },10)
+       
     }
 
     return winner;
@@ -42,10 +45,8 @@ const scissor = document.querySelector("#scissor");
 rock.addEventListener("click", (event) => playRound(event, "rock"));
 ppr.addEventListener("click", (event) => playRound(event, "paper"));
 scissor.addEventListener("click", (event) => playRound(event, "scissor"));
-
-function game() {
-
 }
+document.getElementsByClassName("playButton")[0].addEventListener("click", (event) => game(event))
 
 
 
