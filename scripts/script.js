@@ -11,6 +11,8 @@ function computerPlay() {
 }
 function playRound(event, playerSelect) {
     let compSelect = computerPlay();
+    let compImage = "comp-" + compSelect;
+    document.getElementById(compImage).style.cssText = "transform: scale(1.2);"; 
     let options = {
         rock: 0,
         scissor: 1,
@@ -24,17 +26,20 @@ function playRound(event, playerSelect) {
         playerScore.textContent = `${++playerScore.textContent}`;
     }
     else if (playerIndex === compIndex)
-        winner = "None";
+        winner = "No one";
     else {
         winner = "Robot";
         compScore.textContent = `${++compScore.textContent}`;
     }
     document.getElementById("whoWon").innerHTML = `${winner.toUpperCase()} won this round!`;
+    setTimeout(function() {
+    document.getElementById(compImage).style.cssText = "transform: scale(1);"; 
+    }, 500);
     if (compScore.textContent === '5' || playerScore.textContent === '5') {
         setTimeout(function() {
             alert(`${winner} won the game!`); window.location.reload();
-        },10)
-       
+        },100)
+        
     }
     return winner;
 }
@@ -48,7 +53,11 @@ ppr.addEventListener("click", (event) => playRound(event, "paper"));
 scissor.addEventListener("click", (event) => playRound(event, "scissor"));
 }
 const playButton = document.getElementById("playButton");
-playButton.addEventListener("click", game)
+playButton.addEventListener("click", game);
+playButton.addEventListener("click", (e) => {
+    e.target.style.cssText = "box-shadow: 0 0 5px 10px  rgba(9, 240, 228, 0.3);"; 
+    e.target.textContent = "Now Playing..."; 
+})
 
 
 
