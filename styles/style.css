@@ -5,24 +5,29 @@ body{
     text-align: center;
 }
 h1{
-    font-size: 100px;
+    font-size: 50px;
     margin-top: 10px;
 }
 .container{
     display: flex; 
     justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-items: center;
     font-size: 40px;
     margin: 0px;
     padding: 0px; 
 }
 
 .container > div{
-    margin: 0px;
-    padding: 0px; 
     border: 10px solid whitesmoke;
-    width: 35%;
+    width: 30%;
     height: 500px;
 }
+
+.images > img:hover{
+        transform: scale(1.2);
+}
+
 
 .images{
     display: flex;
@@ -52,4 +57,35 @@ hr{
 .container > div > div{
     margin: 0px;
  padding: 0px;
+ font-size: 32px;
+}
+.container > div:nth-of-type(2){
+    /* width: 10%;
+    border: none;
+    height: 20px; */
+    width: 10%;
+    border: none; 
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    /* margin-bottom: 5%; */
+    
+}
+#whoWon{
+    margin-top: 50px;
+    justify-self: flex-start;
+}
+
+.playButton{
+    margin-top: 100px;
+    background-color:  #AA1111 ; 
+    border: 1px solid turquoise;
+    color:  #EBEBEB;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Audiowide', cursive;
+    font-size: 25px;
+    /* height: 20%; */
+    /* justify-self: center; */
+    box-shadow: 0 0 5px 10px  rgba(9, 240, 228, 0.3);
 }

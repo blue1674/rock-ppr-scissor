@@ -1,62 +1,136 @@
+let playerScore = document.getElementById("player-score");
+let compScore = document.getElementById("comp-score");
+
+
 function computerPlay() {
     let option = ["rock", "scissor", "paper"];
     let randomIndex = Math.floor(Math.random() * 3);
     return option[randomIndex];
 }
+function playRound(event, playerSelect) {
+    let compSelect = computerPlay();
+    let options = {
+        rock: 0,
+        scissor: 1,
+        paper: 2,
+    };
+    let compIndex = options[compSelect];
+    let playerIndex = options[playerSelect];
+    let winner;
+    if ((playerIndex === compIndex - 1) || (playerIndex === 2 && compIndex === 0)) {
+        winner = "You";
+        playerScore.textContent = `${++playerScore.textContent}`;
+    }
+    else if (playerIndex === compIndex)
+        winner = "None";
+    else {
+        winner = "Robot";
+        compScore.textContent = `${++compScore.textContent}`;
+    }
+    document.getElementById("whoWon").innerHTML = `${winner.toUpperCase()} won this round!`;
+    if (compScore.textContent === '5' || playerScore.textContent === '5') {
+        alert(`${winner} won the game!`); window.location.reload()
+    }
 
-
-
-function declareWinner(winner, computerSelect, playerSelect) {
-    if (winner === "None")
-        return `It's a tie of two ${computerSelect}s.`;
-    if (winner === "Computer")
-        return `You Lose! ${computerSelect} beats ${playerSelect}!`;
-    return `You Win! ${playerSelect} beats ${computerSelect}!`;
+    return winner;
 }
 
-function capitalize(word) {
-    return word.charAt(0).toUpperCase() + word.substring(1).toLowerCase();
-}
+const rock = document.querySelector("#rock");
+const ppr = document.querySelector("#paper");
+const scissor = document.querySelector("#scissor");
+
+rock.addEventListener("click", (event) => playRound(event, "rock"));
+ppr.addEventListener("click", (event) => playRound(event, "paper"));
+scissor.addEventListener("click", (event) => playRound(event, "scissor"));
+
 function game() {
-    function playRound(playerSelection, computerSelection) {
-        let options = {
-            Rock: 0,
-            Scissor: 1,
-            Paper: 2,
-        }
-        let playerIndex = options[playerSelection];
-        let computerIndex = options[computerSelection];
-        let winner = "None";
-        if (playerIndex === computerIndex)
-            return winner;
 
-        if ((playerIndex == computerIndex - 1) || (playerIndex == 0 && computerIndex == 1))
-            winner = "Player";
-        else
-            winner = "Computer";
-        return winner;
-
-
-    }
-
-    let scoreP = 0;
-    let scoreC = 0;
-    while(scoreP !== 5 && scoreC !== 5) {
-        const playerSelection = capitalize(prompt("Rock/Paper/Scissor?"));
-        const computerSelection = capitalize(computerPlay());
-        let winner = playRound(playerSelection, computerSelection);
-        alert(declareWinner(winner, computerSelection, playerSelection));
-        if (winner === "Player")
-            scoreP++;
-        else if (winner === "Computer")
-            scoreC++;
-    }
-    alert(`Your Score:${scoreP}\nComputer's Score: ${scoreC}`);
-    if (scoreP > scoreC)
-        alert(`You Win the game!`);
-    else if (scoreP === scoreC)
-        alert('It\'s a Tie!');
-    else
-        alert(`You lose the game!`);
 }
-game();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function game() {
+//     // Function to modify the text content of the paragraph
+//     const changeText = () => {
+//         const p = document.querySelector('p');
+
+//         p.textContent = "I changed because of an event handler property.";
+//     }
+
+//     // Add event handler as a property of the button element
+//     const button = document.querySelector('button');
+//     button.onclick = changeText;
+
+
+//     let scoreP = 0;
+//     let scoreC = 0;
+//     function playRound(playerSelection, computerSelection) {
+//         let options = {
+//             Rock: 0,
+//             Scissor: 1,
+//             Paper: 2,
+//         }
+//         const compImage = document.getElementsByClassName('compImage');
+//         let index;
+//         if (computerSelection === "Rock") {
+//             index = 0;
+//         }
+//         else if (computerSelection === "Paper") {
+//             index = 1;
+//         }
+//         else {
+//             index = 2;
+//         }
+//         compImage[index].style.cssText = 'transform: scale(2);';
+//         let playerIndex = options[playerSelection];
+//         let computerIndex = options[computerSelection];
+//         let winner;
+
+//         if ((playerIndex == computerIndex - 1) || (playerIndex == 0 && computerIndex == 1)) {
+//             scoreP++;
+//             winner = "Player";
+//         }
+//         else if (playerIndex === computerIndex)
+//             winner = "None";
+//         else {
+//             scoreC++;
+//             winner = "Computer";
+//         }
+//         const result = document.getElementById('whoWon');
+//         result.innerHTML = `${winner} won this round`;
+//         const result = document.getElementById('scoreBoard');
+//         result.innerHTML = `Your Score = ${scoreC} <br> Computer's Score = ${scoreP}`;
+//         if (scoreC === 5 || scoreP === 5)
+//             declareWinner();
+//     }
+
+//     function declareWinner() {
+//         alert(`Your Score:${scoreP}\nComputer's Score: ${scoreC}`);
+//         if (scoreP > scoreC)
+//             alert(`You Win the game!`);
+//         else
+//             alert(`You lose the game!`);
+//     }
+//     return;
+// }
+// game();
+
